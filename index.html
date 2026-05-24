@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Miruthu 🎉</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#2b1055,#7597de);
+overflow-x:hidden;
+color:white;
+text-align:center;
+min-height:100vh;
+}
+
+header{
+padding:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+.hero{
+padding:30px 20px;
+}
+
+.hero h1{
+font-size:55px;
+color:#ff69b4;
+text-shadow:0 0 15px #ff69b4;
+animation: glow 2s infinite alternate;
+}
+
+.hero p{
+margin-top:20px;
+font-size:20px;
+line-height:1.6;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 28px;
+border-radius:40px;
+background:#ff4da6;
+color:white;
+text-decoration:none;
+font-weight:bold;
+border:none;
+cursor:pointer;
+box-shadow:0 0 15px #ff4da6;
+}
+
+.section{
+padding:40px 20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.1);
+padding:15px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+
+.card img{
+width:100%;
+border-radius:15px;
+}
+
+footer{
+padding:20px;
+font-size:18px;
+}
+
+.balloon{
+position:fixed;
+bottom:-100px;
+width:50px;
+height:70px;
+border-radius:50%;
+animation:float 10s linear infinite;
+opacity:0.7;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+}
+100%{
+transform:translateY(-120vh);
+}
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px #ff69b4;
+}
+to{
+text-shadow:0 0 25px #ff1493;
+}
+}
+
+.popup{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.popup-content{
+background:white;
+color:#ff1493;
+padding:30px;
+border-radius:20px;
+width:85%;
+max-width:350px;
+}
+
+.music-btn{
+position:fixed;
+top:20px;
+right:20px;
+z-index:100;
+}
+</style>
+</head>
+
+<body>
+
+<button class="btn music-btn" onclick="toggleMusic()">🎵 Music</button>
+
+<header>
+💖 Happy Birthday Bestfriend 💖
+</header>
+
+<section class="hero">
+<h1>Happy Birthday 🎂</h1>
+
+<p>
+To my amazing best friend ✨<br><br>
+Thank you for always being there for me,
+for making me smile and supporting me always 💕
+</p>
+
+<button class="btn" onclick="showSurprise()">
+🎁 Click For Surprise
+</button>
+</section>
+
+<section class="section">
+<h2>📸 Memories</h2>
+
+<div class="cards">
+<div class="card">
+<img src="https://picsum.photos/300?1">
+<p>Beautiful Memories 💖</p>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/300?2">
+<p>Crazy Moments 😂</p>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/300?3">
+<p>Forever Friendship ✨</p>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>💌 Special Message</h2>
+
+<div class="card">
+<p style="line-height:1.8;">
+You are one of the best things that happened in my life 💕<br><br>
+May your life be filled with happiness,
+success and endless smiles 🎉
+</p>
+</div>
+</section>
+
+<footer>
+Made with ❤️ for my best friend
+</footer>
+
+<div class="popup" id="popup">
+<div class="popup-content">
+<h2>🎉 Surprise 🎉</h2>
+<p style="margin-top:15px;">
+You are special, loved and appreciated always 💖
+</p>
+
+<button class="btn" onclick="closeSurprise()">
+Close
+</button>
+</div>
+</div>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<script>
+const colors=['#ff4d6d','#ffd93d','#6bcBef','#b983ff','#6ee7b7'];
+
+for(let i=0;i<20;i++){
+const balloon=document.createElement('div');
+balloon.classList.add('balloon');
+
+balloon.style.left=Math.random()*100+'vw';
+balloon.style.background=colors[Math.floor(Math.random()*colors.length)];
+balloon.style.animationDuration=(5+Math.random()*5)+'s';
+
+document.body.appendChild(balloon);
+}
+
+function showSurprise(){
+document.getElementById('popup').style.display='flex';
+}
+
+function closeSurprise(){
+document.getElementById('popup').style.display='none';
+}
+
+const music=document.getElementById('music');
+
+function toggleMusic(){
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+}
+</script>
+
+</body>
+  </html>
