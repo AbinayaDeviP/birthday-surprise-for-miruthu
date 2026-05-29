@@ -1,324 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Bestie 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#05010d;
-    font-family:'Poppins',sans-serif;
-    overflow-x:hidden;
-    color:white;
+background:#120018;
+overflow-x:hidden;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+position:relative;
 }
 
-/* Stars Background */
+/* Background Glow */
 
-.stars{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    z-index:-1;
+body::before{
+content:'';
+position:absolute;
+width:500px;
+height:500px;
+background:#ff1493;
+filter:blur(180px);
+top:-150px;
+left:-100px;
+opacity:0.5;
 }
 
-.star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:white;
-    border-radius:50%;
-    opacity:0.7;
-    animation:twinkle 4s infinite ease-in-out;
+body::after{
+content:'';
+position:absolute;
+width:450px;
+height:450px;
+background:#7b2cff;
+filter:blur(180px);
+bottom:-150px;
+right:-100px;
+opacity:0.5;
 }
 
-@keyframes twinkle{
-    0%,100%{
-        opacity:0.2;
-    }
-    50%{
-        opacity:1;
-    }
+/* Main Card */
+
+.container{
+width:100%;
+max-width:380px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:30px;
+padding:30px 22px;
+text-align:center;
+position:relative;
+overflow:hidden;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+z-index:2;
 }
 
-/* Hero */
+/* Heading */
 
-.hero{
-    width:100%;
-    padding-top:120px;
-    padding-bottom:80px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
+h1{
+font-size:2.4rem;
+color:#fff;
+margin-bottom:10px;
+font-weight:700;
+line-height:1.2;
 }
 
-/* Top Small Text */
-
-.small-text{
-    color:#ffb3dc;
-    letter-spacing:3px;
-    font-size:11px;
-    margin-bottom:18px;
+h1 span{
+color:#ff4da6;
+text-shadow:0 0 20px #ff4da6;
 }
 
-/* Main Heading */
-
-.hero h1{
-    font-size:44px;
-    line-height:1.1;
-    color:#ff72c3;
-
-    text-shadow:
-    0 0 12px rgba(255,114,195,0.4);
-
-    margin-bottom:10px;
+.sub{
+color:#ffd1e8;
+font-size:1rem;
+margin-bottom:25px;
 }
 
-/* Name */
+/* Image */
 
-.hero h2{
-    font-size:30px;
-    font-weight:600;
-    margin-bottom:28px;
+.photo-box{
+width:230px;
+height:230px;
+margin:auto;
+border-radius:50%;
+padding:6px;
+background:linear-gradient(45deg,#ff4da6,#fff,#8f5bff,#ff4da6);
+animation:spin 6s linear infinite;
+box-shadow:0 0 35px rgba(255,77,166,0.6);
+}
+
+.photo-box img{
+width:100%;
+height:100%;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #fff;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
 }
 
 /* Message */
 
 .message{
-    width:85%;
-    max-width:320px;
-
-    font-size:17px;
-    line-height:1.8;
-
-    color:#ece4f7;
+margin-top:25px;
+color:#fff;
+font-size:0.96rem;
+line-height:1.8;
 }
 
 /* Button */
 
 .btn{
-    margin-top:35px;
-
-    padding:15px 34px;
-
-    border:none;
-    border-radius:50px;
-
-    background:linear-gradient(
-    45deg,
-    #ff4fa3,
-    #ff7cc8
-    );
-
-    color:white;
-
-    font-size:17px;
-    font-weight:600;
-
-    box-shadow:
-    0 0 18px rgba(255,79,163,0.35);
+margin-top:28px;
+display:inline-block;
+padding:14px 30px;
+background:linear-gradient(45deg,#ff4da6,#ff1493);
+border:none;
+border-radius:50px;
+color:white;
+font-size:1rem;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 8px 25px rgba(255,20,147,0.5);
+transition:0.3s;
 }
 
-/* Memories */
-
-.memories{
-    padding:50px 20px 90px;
-    text-align:center;
+.btn:hover{
+transform:scale(1.06);
 }
 
-.memories h3{
-    color:#ff9ed2;
-    font-size:30px;
-    margin-bottom:35px;
+/* Popup */
+
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.75);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:0.4s;
+padding:20px;
+z-index:999;
 }
 
-/* Gallery */
-
-.gallery{
-    display:flex;
-    gap:18px;
-    overflow-x:auto;
-
-    padding-bottom:10px;
+.popup.active{
+opacity:1;
+pointer-events:auto;
 }
 
-/* Cards */
-
-.card{
-    min-width:190px;
-
-    background:#12081f;
-
-    border-radius:20px;
-
-    padding:10px;
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    box-shadow:
-    0 0 18px rgba(255,105,180,0.08);
+.popup-card{
+background:#1b0625;
+border:1px solid rgba(255,255,255,0.08);
+border-radius:28px;
+padding:30px 24px;
+max-width:350px;
+width:100%;
+text-align:center;
+animation:popup 0.4s ease;
+box-shadow:0 10px 35px rgba(0,0,0,0.5);
 }
 
-.card img{
-    width:100%;
-    height:240px;
-
-    object-fit:cover;
-
-    border-radius:16px;
+@keyframes popup{
+from{
+transform:scale(0.6);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
 }
 
-.card p{
-    margin-top:10px;
-    color:#ffd6ee;
+.popup-card h2{
+color:#ff69b4;
+margin-bottom:15px;
+font-size:2rem;
 }
 
-/* Music Button */
+.popup-card p{
+color:#fff;
+line-height:1.8;
+font-size:0.95rem;
+}
 
-#musicBtn{
-    position:fixed;
-    right:18px;
-    bottom:18px;
+.close-btn{
+margin-top:22px;
+padding:12px 26px;
+border:none;
+border-radius:40px;
+background:#ff1493;
+color:white;
+font-size:1rem;
+cursor:pointer;
+}
 
-    background:#ff4fa3;
-    color:white;
+/* Floating Hearts */
 
-    border:none;
+.heart{
+position:absolute;
+color:#ff69b4;
+font-size:20px;
+animation:float 8s linear infinite;
+opacity:0.8;
+}
 
-    padding:12px 18px;
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
 
-    border-radius:50px;
+/* Mobile */
 
-    font-size:15px;
+@media(max-width:420px){
 
-    z-index:1000;
+.photo-box{
+width:200px;
+height:200px;
+}
 
-    box-shadow:
-    0 0 15px rgba(255,79,163,0.3);
+h1{
+font-size:2rem;
+}
+
+.message{
+font-size:0.9rem;
+}
+
 }
 
 </style>
+</head>
 
-<!-- Stars -->
+<body>
 
-<div class="stars" id="stars"></div>
+<!-- Floating Hearts -->
 
-<!-- Hero Section -->
+<div class="heart" style="left:8%; animation-duration:7s;">💖</div>
+<div class="heart" style="left:22%; animation-duration:10s;">✨</div>
+<div class="heart" style="left:40%; animation-duration:8s;">💗</div>
+<div class="heart" style="left:58%; animation-duration:11s;">💕</div>
+<div class="heart" style="left:76%; animation-duration:9s;">💞</div>
+<div class="heart" style="left:90%; animation-duration:12s;">💖</div>
 
-<section class="hero">
+<!-- Main Card -->
 
-<div class="small-text">
-TO THE MOST SPECIAL PERSON ✨
+<div class="container">
+
+<h1>Happy <span>Birthday</span> 🎉</h1>
+
+<div class="sub">
+To My Beautiful Best Friend 💕
 </div>
 
-<h1>Happy Birthday</h1>
+<div class="photo-box">
 
-<h2>Miruthu ❤️</h2>
+<!-- Replace bestie.jpg with your friend's image -->
+
+<img src="bestie.jpg" alt="Best Friend">
+
+</div>
 
 <div class="message">
-You are the brightest star in my sky ✨<br><br>
 
-Thank you for every laugh, every memory and every moment 💕
+Thank you for being the most amazing person in my life 💖<br><br>
+
+Your smile, support, care, and friendship mean everything to me ✨<br><br>
+
+May your birthday be filled with happiness, love, laughter, and unforgettable memories 🎂🌸
+
 </div>
 
-<button class="btn">
-🎁 Open Surprise
+<button class="btn" onclick="showPopup()">
+Open Your Surprise 🎁
 </button>
 
-</section>
-
-<!-- Memories -->
-
-<section class="memories">
-
-<h3>📸 Our Beautiful Memories</h3>
-
-<div class="gallery">
-
-<div class="card">
-<img src="photo1.jpg">
-<p>First Meet ❤️</p>
 </div>
 
-<div class="card">
-<img src="photo2.jpg">
-<p>Favorite Moment ✨</p>
-</div>
+<!-- Popup -->
 
-<div class="card">
-<img src="photo3.jpg">
-<p>Forever Together 💕</p>
-</div>
+<div class="popup" id="popup">
 
-</div>
+<div class="popup-card">
 
-</section>
+<h2>For You 💖</h2>
 
-<!-- Music -->
+<p>
 
-<audio id="bgMusic" autoplay loop>
-<source src="https://files.catbox.moe/0j6p6x.mp3" type="audio/mp3">
-</audio>
+No matter how life changes,<br>
+our friendship will always stay special 💕<br><br>
 
-<button id="musicBtn">
-🎵 Music
+You deserve all the happiness in the world ✨<br><br>
+
+Keep smiling, shining, and being the wonderful person you are 🌸
+
+</p>
+
+<button class="close-btn" onclick="closePopup()">
+Close
 </button>
+
+</div>
+
+</div>
 
 <script>
 
-/* Stars */
-
-const starsContainer =
-document.getElementById('stars');
-
-for(let i=0;i<90;i++){
-
-let star =
-document.createElement('div');
-
-star.classList.add('star');
-
-star.style.top =
-Math.random()*100+'%';
-
-star.style.left =
-Math.random()*100+'%';
-
-star.style.animationDuration =
-(Math.random()*3+2)+'s';
-
-starsContainer.appendChild(star);
-
+function showPopup(){
+document.getElementById('popup').classList.add('active');
 }
 
-/* Music */
-
-const music =
-document.getElementById("bgMusic");
-
-const btn =
-document.getElementById("musicBtn");
-
-btn.addEventListener("click",()=>{
-
-if(music.paused){
-
-music.play();
-btn.innerHTML="🎵 Music";
-
-}else{
-
-music.pause();
-btn.innerHTML="🔇 Muted";
-
+function closePopup(){
+document.getElementById('popup').classList.remove('active');
 }
-
-});
 
 </script>
+
+</body>
+</html>
